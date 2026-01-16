@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cokjp6m2uss8t"]
+
+[ext_resource type="Script" path="res://player/sword.gd" id="1_s7jof"]
+
+[node name="Sword" type="Area2D"]
+position = Vector2(10, -10)
+rotation = -0.523599
+script = ExtResource("1_s7jof")
+
+[node name="SwingTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="SwingTimer" to="." method="_on_swing_timer_timeout"]

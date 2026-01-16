@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b01i2n3rx0ppa"]
+
+[ext_resource type="Script" path="res://player/fireball_caster.gd" id="1_nkmif"]
+
+[node name="FireballCaster" type="Node2D"]
+script = ExtResource("1_nkmif")
+
+[node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

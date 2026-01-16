@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bstcv5oum2w65"]
+
+[ext_resource type="Script" path="res://player/health_display_label.gd" id="1_xmexs"]
+
+[node name="HealthDisplayLabel" type="Node2D"]
+script = ExtResource("1_xmexs")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -41.0
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1

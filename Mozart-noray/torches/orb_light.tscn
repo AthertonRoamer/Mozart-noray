@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx0r7imtp5dx1"]
+
+[ext_resource type="Texture2D" uid="uid://w40v5onards4" path="res://torches/light_image_circle.png" id="1_384o2"]
+
+[node name="OrbLight" type="PointLight2D"]
+scale = Vector2(2, 2)
+color = Color(0, 0, 1, 1)
+shadow_enabled = true
+texture = ExtResource("1_384o2")

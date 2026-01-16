@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://0cigfscxpccx"
+path="res://.godot/imported/Mozart theme.mp3-6da2fbdb7f06c7c481ff14eb9432e779.mp3str"
+
+[deps]
+
+source_file="res://sound/Mozart theme.mp3"
+dest_files=["res://.godot/imported/Mozart theme.mp3-6da2fbdb7f06c7c481ff14eb9432e779.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

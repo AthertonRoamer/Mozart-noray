@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2w265ag2yw6a"]
+
+[ext_resource type="Script" path="res://world/door.gd" id="1_fjcme"]
+[ext_resource type="Texture2D" uid="uid://cuk8lwq7444s7" path="res://world/Tiles.png" id="2_gmoqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b34d0"]
+size = Vector2(96, 96)
+
+[node name="Door" type="StaticBody2D" groups=["grabbable"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_fjcme")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b34d0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_gmoqr")
+hframes = 5
+vframes = 5
+frame = 4

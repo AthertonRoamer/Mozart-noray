@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://yckxw1lb87tu"]
+
+[ext_resource type="Script" path="res://pedestal/pedestal.gd" id="1_3ldw6"]
+[ext_resource type="Texture2D" uid="uid://k82ph2g3m1q0" path="res://pedestal/Pedestal.png" id="1_p2mb5"]
+[ext_resource type="AudioStream" uid="uid://cbiff1ylh33dn" path="res://sound/pop.wav" id="2_hxxap"]
+[ext_resource type="PackedScene" uid="uid://bx0r7imtp5dx1" path="res://torches/orb_light.tscn" id="4_87rw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6dim"]
+size = Vector2(72, 72)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_750ns"]
+polygon = PackedVector2Array(12, -8, 12, -6, 11, -6, 11, -4, 10, -4, 10, -3, 9, -3, 9, 0, 5, 0, 5, 2, 4, 2, 4, 4, 2, 4, 2, 6, 4, 6, 4, 8, 5, 8, 5, 9, 6, 9, 6, 10, 7, 10, 7, 11, 8, 11, 8, 12, 9, 12, 9, 13, 10, 13, 10, 15, 11, 15, 11, 16, -11, 16, -11, 15, -10, 15, -10, 13, -9, 13, -9, 12, -8, 12, -8, 11, -7, 11, -7, 10, -6, 10, -6, 9, -5, 9, -5, 8, -4, 8, -4, 6, -2, 6, -2, 4, -4, 4, -4, 2, -5, 2, -5, 0, -8, 0, -8, -1, -9, -1, -9, -3, -10, -3, -10, -4, -11, -4, -11, -6, -12, -6, -12, -8, -10, -8, -10, -7, -7, -7, -7, -6, 7, -6, 7, -7, 10, -7, 10, -8)
+
+[node name="Pedestal" type="StaticBody2D" groups=["grabbable", "object", "pedestal"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_3ldw6")
+grab_sound = ExtResource("2_hxxap")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("1_p2mb5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_q6dim")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+scale = Vector2(3, 3)
+occluder = SubResource("OccluderPolygon2D_750ns")
+
+[node name="OrbLight" parent="." instance=ExtResource("4_87rw1")]
+position = Vector2(0, -26)

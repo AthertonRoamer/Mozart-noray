@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DroppedItemStats" load_steps=3 format=3 uid="uid://dob6j6reu2ea6"]
+
+[ext_resource type="Texture2D" uid="uid://cootqlqt7xflw" path="res://pedestal/Orb.png" id="1_nisvv"]
+[ext_resource type="Script" path="res://items/dropped_item/dropped_item_stats.gd" id="1_sqd2m"]
+
+[resource]
+script = ExtResource("1_sqd2m")
+image = ExtResource("1_nisvv")

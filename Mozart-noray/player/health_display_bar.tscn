@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqmd2qd5sl20f"]
+
+[ext_resource type="Script" path="res://player/health_display_bar.gd" id="1_eyvqb"]
+[ext_resource type="Texture2D" uid="uid://b0j260mm384ps" path="res://player/art/health_bar_background.png" id="2_vyab7"]
+[ext_resource type="Texture2D" uid="uid://dlucavx4jj6r7" path="res://player/art/health_bar.png" id="3_7hmqd"]
+
+[node name="HealthDisplayBar" type="Node2D"]
+script = ExtResource("1_eyvqb")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.5)
+value = 100.0
+texture_under = ExtResource("2_vyab7")
+texture_progress = ExtResource("3_7hmqd")
+texture_progress_offset = Vector2(8, 8)

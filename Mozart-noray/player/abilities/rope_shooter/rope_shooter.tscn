@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://vo86178jek3f"]
+
+[ext_resource type="Script" path="res://player/abilities/rope_shooter/rope_shooter.gd" id="1_mooui"]
+[ext_resource type="AudioStream" uid="uid://b57qmtgp6tsxv" path="res://sound/shoot_rope.wav" id="2_ydvff"]
+
+[node name="RopeShooter" type="Node2D"]
+script = ExtResource("1_mooui")
+shoot_sound = ExtResource("2_ydvff")

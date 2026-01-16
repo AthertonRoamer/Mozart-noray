@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://di02hm7wr47fi"]
+
+[ext_resource type="Script" path="res://items/dropped_item/dropped_orb.gd" id="1_gh0bo"]
+[ext_resource type="Texture2D" uid="uid://cootqlqt7xflw" path="res://pedestal/Orb.png" id="2_kf80s"]
+[ext_resource type="PackedScene" uid="uid://bx0r7imtp5dx1" path="res://torches/orb_light.tscn" id="3_lw4k7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2872"]
+radius = 19.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwnx1"]
+size = Vector2(40, 16)
+
+[node name="DroppedOrb" type="Area2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gh0bo")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_kf80s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y2872")
+
+[node name="FloorDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorDetector"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_rwnx1")
+
+[node name="OrbLight" parent="." instance=ExtResource("3_lw4k7")]

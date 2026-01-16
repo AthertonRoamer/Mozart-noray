@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr8gcgnc11acu"]
+
+[ext_resource type="PackedScene" uid="uid://0bufwkthdty0" path="res://player/player.tscn" id="1_bu7wg"]
+[ext_resource type="Script" path="res://test/rope_test/rope_test_world.gd" id="1_qd8w0"]
+[ext_resource type="PackedScene" uid="uid://b2g6c2d6jb4bp" path="res://player/rope/rope.tscn" id="3_hbeph"]
+[ext_resource type="PackedScene" uid="uid://bvypk62rxld3n" path="res://player/rope/rope_anchor.tscn" id="3_nqxhi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmbs"]
+size = Vector2(770, 144)
+
+[node name="RopeTestWorld" type="Node2D" node_paths=PackedStringArray("rope_manager")]
+script = ExtResource("1_qd8w0")
+rope_manager = NodePath("Ropes")
+
+[node name="Block" type="StaticBody2D" parent="."]
+position = Vector2(224, 488)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block2" type="StaticBody2D" parent="."]
+position = Vector2(1102, 108)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block2"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block2"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block3" type="StaticBody2D" parent="."]
+position = Vector2(4401, 635)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block3"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block3"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block4" type="StaticBody2D" parent="."]
+position = Vector2(5048, 108)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block4"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block4"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block5" type="StaticBody2D" parent="."]
+position = Vector2(4042, 114)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block5"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block5"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block6" type="StaticBody2D" parent="."]
+position = Vector2(3055, 108)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block6"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block6"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Block7" type="StaticBody2D" parent="."]
+position = Vector2(2073, 105)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Block7"]
+color = Color(0.027451, 0, 0.494118, 1)
+polygon = PackedVector2Array(0, 1, 770, 1, 770, 145, 0, 145)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Block7"]
+position = Vector2(385, 73)
+shape = SubResource("RectangleShape2D_ebmbs")
+
+[node name="Player" parent="." instance=ExtResource("1_bu7wg")]
+position = Vector2(762, 373)
+just_work = true
+
+[node name="Ropes" type="Node2D" parent="."]
+
+[node name="Rope" parent="Ropes" instance=ExtResource("3_hbeph")]
+
+[node name="RopeAnchor" parent="Ropes/Rope" node_paths=PackedStringArray("anchor_below") instance=ExtResource("3_nqxhi")]
+position = Vector2(602, -77)
+highlight_color = Color(0.6, 0.6, 0.6, 1)
+anchor_below = NodePath("../RopeAnchor2")
+mode_id = 0
+
+[node name="RopeAnchor2" parent="Ropes/Rope" node_paths=PackedStringArray("anchor_above") instance=ExtResource("3_nqxhi")]
+position = Vector2(847, 192)
+anchor_above = NodePath("../RopeAnchor")

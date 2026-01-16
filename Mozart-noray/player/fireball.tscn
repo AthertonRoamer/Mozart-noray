@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0irwxpwu5kgk"]
+
+[ext_resource type="Script" path="res://player/fireball.gd" id="1_8oty1"]
+[ext_resource type="Texture2D" uid="uid://bdxhgrcw0dbwo" path="res://player/art/Fireball Spawn.png" id="2_bhg04"]
+[ext_resource type="Texture2D" uid="uid://w40v5onards4" path="res://torches/light_image_circle.png" id="3_abtyq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0kfe0"]
+radius = 17.0
+
+[sub_resource type="Animation" id="Animation_0aud6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nbes5"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5oo4"]
+_data = {
+"RESET": SubResource("Animation_0aud6"),
+"spawn": SubResource("Animation_nbes5")
+}
+
+[node name="Fireball" type="Area2D"]
+script = ExtResource("1_8oty1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_bhg04")
+hframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0kfe0")
+
+[node name="VanishTimer" type="Timer" parent="."]
+wait_time = 7.0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u5oo4")
+}
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.784314, 0.392157, 0, 1)
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("3_abtyq")
+
+[connection signal="timeout" from="VanishTimer" to="." method="_on_vanish_timer_timeout"]

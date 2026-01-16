@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvypk62rxld3n"]
+
+[ext_resource type="Script" path="res://player/rope/RopeAnchor.gd" id="1_i42n6"]
+[ext_resource type="Script" path="res://player/rope/free_anchor.gd" id="2_cyrjm"]
+[ext_resource type="Texture2D" uid="uid://fbfj6cej50al" path="res://art/Anchor.png" id="2_ghrsh"]
+[ext_resource type="Script" path="res://player/rope/static_anchor.gd" id="3_oluv1"]
+[ext_resource type="AudioStream" uid="uid://dkqvol52rpcgf" path="res://sound/clang.wav" id="4_wwy7c"]
+[ext_resource type="Script" path="res://player/rope/dynamic_anchor.gd" id="4_xswdf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ff4tc"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uhx81"]
+resource_local_to_scene = true
+size = Vector2(500, 10)
+
+[node name="RopeAnchor" type="Node2D" node_paths=PackedStringArray("free_anchor", "static_anchor", "dynamic_anchor", "image", "rope_area", "rope_area_collision_shape")]
+script = ExtResource("1_i42n6")
+free_anchor = NodePath("FreeAnchor")
+static_anchor = NodePath("StaticAnchor")
+dynamic_anchor = NodePath("DynamicAnchor")
+image = NodePath("Sprite2D")
+rope_area = NodePath("RobeArea")
+rope_area_collision_shape = NodePath("RobeArea/CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_ghrsh")
+
+[node name="FreeAnchor" type="Node2D" parent="." node_paths=PackedStringArray("hold_detector")]
+visible = false
+script = ExtResource("2_cyrjm")
+hold_detector = NodePath("HoldDetector")
+hit_sound = ExtResource("4_wwy7c")
+
+[node name="HoldDetector" type="Area2D" parent="FreeAnchor"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FreeAnchor/HoldDetector"]
+shape = SubResource("CircleShape2D_ff4tc")
+
+[node name="StaticAnchor" type="Node2D" parent="."]
+script = ExtResource("3_oluv1")
+
+[node name="DynamicAnchor" type="Node2D" parent="." node_paths=PackedStringArray("anchor")]
+visible = false
+script = ExtResource("4_xswdf")
+anchor = NodePath("..")
+
+[node name="RobeArea" type="Area2D" parent="."]
+position = Vector2(250, 0)
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RobeArea"]
+shape = SubResource("RectangleShape2D_uhx81")
+
+[connection signal="body_entered" from="RobeArea" to="." method="_on_robe_area_body_entered"]
+[connection signal="body_exited" from="RobeArea" to="." method="_on_robe_area_body_exited"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://e7w4amufuxl"]
+
+[ext_resource type="Texture2D" uid="uid://0wqpm27w26th" path="res://art/Torch.png" id="1_jx2gb"]
+[ext_resource type="Texture2D" uid="uid://qh4pax6vr8th" path="res://art/torch2-16.png" id="2_fx0hq"]
+[ext_resource type="Texture2D" uid="uid://w40v5onards4" path="res://torches/light_image_circle.png" id="3_in8ft"]
+
+[node name="Torch" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(3, 3)
+texture = ExtResource("1_jx2gb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_fx0hq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+scale = Vector2(2, 2)
+color = Color(0.968627, 0.384314, 0, 1)
+energy = 2.01
+shadow_enabled = true
+texture = ExtResource("3_in8ft")
