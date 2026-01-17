@@ -114,6 +114,7 @@ func on_player_info_updated():
 
 func _on_noray_host_pressed() -> void:
 	NorayManager.initiate_noray_server()
+	set_menu(menu_options.HOST_MENU)
 
 
 func _on_noray_client_pressed() -> void:
