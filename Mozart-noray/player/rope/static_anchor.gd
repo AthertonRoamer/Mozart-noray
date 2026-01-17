@@ -1,5 +1,2 @@
 class_name StaticAnchor
 extends AnchorMode
-
-
-

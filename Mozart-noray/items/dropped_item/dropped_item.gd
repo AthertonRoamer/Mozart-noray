@@ -21,5 +21,3 @@ func grab(_grabber : Player) -> void:
 	
 func vanish() -> void:
 	queue_free()
-
-

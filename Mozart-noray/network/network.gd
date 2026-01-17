@@ -3,7 +3,8 @@ extends Node
 signal server_failed
 signal player_info_updated
 
-const PORT = 3000
+#const PORT = 3000
+var port = 3000
 
 var peer : ENetMultiplayerPeer
 var is_server := false
@@ -11,6 +12,7 @@ var server_joinable : bool = false
 var server_browser : Node
 var client_count := 0
 var max_clients = 5
+var noray : bool = false
 
 func _ready():
 	GameState.closing_game.connect(_on_game_closed)
@@ -26,7 +28,7 @@ func initiate_server() -> void:
 	kill_peer()
 	is_server = true
 	peer = ENetMultiplayerPeer.new()
-	var ok = peer.create_server(PORT, max_clients)
+	var ok = peer.create_server(port, max_clients)
 	if ok != OK:
 		print("Failed to create server. Error " + str(ok))
 		server_failed.emit()
@@ -54,7 +56,11 @@ func initiate_client(ip : String) -> void:
 	kill_peer()
 	is_server = false
 	peer = ENetMultiplayerPeer.new()
-	var ok = peer.create_client(ip, PORT)
+	var ok
+	if noray:
+		ok = peer.create_client(ip, port, 0, 0, 0, Noray.local_port)
+	else:
+		ok = peer.create_client(ip, port)
 	if ok != OK:
 		print("Failed to create client. Error " + str(ok))
 		return

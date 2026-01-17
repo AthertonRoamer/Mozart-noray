@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cbic0c1q88ikp"]
 
-[ext_resource type="Script" path="res://menu/main_menu.gd" id="1_rvs2s"]
+[ext_resource type="Script" uid="uid://did01x87swwum" path="res://menu/main_menu.gd" id="1_rvs2s"]
 [ext_resource type="TileSet" uid="uid://doyaqgcdmppv7" path="res://world/tileset.tres" id="2_q6k0y"]
 [ext_resource type="AudioStream" uid="uid://bsb8xgjjpmwfr" path="res://sound/Mozart menu.mp3" id="3_xycow"]
-[ext_resource type="Script" path="res://menu/manual_ip_getter.gd" id="4_hnyds"]
+[ext_resource type="Script" uid="uid://ccylkftx2q51t" path="res://menu/manual_ip_getter.gd" id="4_hnyds"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -73,6 +73,22 @@ size_flags_stretch_ratio = 0.1
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="NorayHost" type="Button" parent="Menu1"]
+layout_mode = 2
+text = "Host with Noray"
+
+[node name="Control4" type="Control" parent="Menu1"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="NorayClient" type="Button" parent="Menu1"]
+layout_mode = 2
+text = "Join Noray Server"
+
+[node name="LineEdit" type="LineEdit" parent="Menu1"]
+layout_mode = 2
+placeholder_text = "Enter Noray code"
 
 [node name="HostMenu" type="Control" parent="."]
 visible = false
@@ -234,6 +250,8 @@ layout_mode = 2
 
 [connection signal="pressed" from="Menu1/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="Menu1/FindServers" to="." method="_on_find_servers_pressed"]
+[connection signal="pressed" from="Menu1/NorayHost" to="." method="_on_noray_host_pressed"]
+[connection signal="pressed" from="Menu1/NorayClient" to="." method="_on_noray_client_pressed"]
 [connection signal="pressed" from="HostMenu/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="HostMenu/HostBack" to="." method="_on_host_back_pressed"]
 [connection signal="pressed" from="ClientMenu/ClientBack" to="." method="_on_client_back_pressed"]

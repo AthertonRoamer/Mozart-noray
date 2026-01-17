@@ -44,4 +44,3 @@ func _process(_delta):
 		GameState.world.global_orb_position = global_position
 		
 		
-

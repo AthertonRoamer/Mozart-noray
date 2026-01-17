@@ -25,6 +25,3 @@ func attach_to_node(_n : Node2D) -> void:
 	
 func detach_from_node(_n : Node2D) -> void:
 	pass
-
-
-

@@ -71,4 +71,3 @@ func activate_respawned_player(id : int) -> void:
 	
 	
 	
-

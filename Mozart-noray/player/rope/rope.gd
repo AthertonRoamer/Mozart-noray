@@ -42,4 +42,3 @@ func remove_anchor_from_rope(child : RopeAnchor) -> void:
 	child.anchor_below.anchor_above = child.anchor_above
 	child.anchor_above.anchor_below = child.anchor_below
 	child.queue_free()
-

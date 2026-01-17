@@ -124,4 +124,3 @@ func _draw():
 		draw_line(Vector2.ZERO, rope_force, color2, 10)
 		draw_line(Vector2.ZERO, rope_force2, color2, 10)
 		#print(anchor.name + " is drawing velocity")
-

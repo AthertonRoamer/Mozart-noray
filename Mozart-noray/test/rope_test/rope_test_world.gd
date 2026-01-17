@@ -12,4 +12,3 @@ func set_fireball(_caster_id : int, _pos : Vector2, _direction : Vector2):
 	
 func handle_everyone_dead() -> void:
 	pass
-

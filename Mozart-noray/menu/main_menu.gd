@@ -112,3 +112,9 @@ func on_player_info_updated():
 			$HostMenu/Panel/PlayerList.add_child(p)
 
 
+func _on_noray_host_pressed() -> void:
+	NorayManager.initiate_noray_server()
+
+
+func _on_noray_client_pressed() -> void:
+	NorayManager.initiate_noray_client($Menu1/LineEdit.text)
