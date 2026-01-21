@@ -5,6 +5,7 @@ extends Node
 var game_id : String = ""
 
 func initiate_noray_server() -> void:
+	Network.noray = true
 	setup_host_noray_connection_signals()
 	if await register_with_noray() != OK:
 		return
@@ -12,10 +13,12 @@ func initiate_noray_server() -> void:
 	
 	
 func initiate_noray_client(g_id : String = game_id) -> void:
+	Network.noray = true
 	setup_client_noray_connection_signals()
 	if await register_with_noray() != OK:
 		return
 	#get game id
+	game_id = g_id
 	Noray.connect_nat(g_id)
 	#Network.initiate_client()
 
