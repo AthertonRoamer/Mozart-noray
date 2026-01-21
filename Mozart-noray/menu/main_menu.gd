@@ -113,9 +113,11 @@ func on_player_info_updated():
 
 
 func _on_noray_host_pressed() -> void:
+	GameState.player_name = $Menu1/NameInput.text
 	NorayManager.initiate_noray_server()
 	set_menu(menu_options.HOST_MENU)
 
 
 func _on_noray_client_pressed() -> void:
+	GameState.player_name = $Menu1/NameInput.text
 	NorayManager.initiate_noray_client($Menu1/LineEdit.text)
